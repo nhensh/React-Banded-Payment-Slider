@@ -1,10 +1,10 @@
 import React from "react";
 
-interface TrashIconProps {
+interface BinIconProps {
   className?: string;
 }
 
-const TrashIcon: React.FC<TrashIconProps> = ({ className }) => (
+const BinIcon: React.FC<BinIconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -17,4 +17,4 @@ const TrashIcon: React.FC<TrashIconProps> = ({ className }) => (
   </svg>
 );
 
-export default TrashIcon;
+export default BinIcon;

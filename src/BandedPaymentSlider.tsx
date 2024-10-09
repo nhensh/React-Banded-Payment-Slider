@@ -1,4 +1,3 @@
-import { t } from "i18next";
 import React, { useEffect, useRef, useState } from "react";
 
 import BinIcon from "./icons/BinIcon";
@@ -9,9 +8,13 @@ interface Band {
   percentage: number;
 }
 
-interface Props {
+interface BandedPaymentSliderProps {
   bands: Band[];
   onBandsChange: (bands: Band[]) => void;
+  labels: {
+    percentage_paid: string;
+    delete_band: string;
+  };
 }
 
 const defaultBands: Band[] = [
@@ -19,9 +22,13 @@ const defaultBands: Band[] = [
   { from: 50, to: 100, percentage: 100 },
 ];
 
-const BandedPaymentSlider: React.FC<Props> = ({
+const BandedPaymentSlider: React.FC<BandedPaymentSliderProps> = ({
   bands: initialBands,
   onBandsChange,
+  labels = {
+    percentage_paid: "Percentage Paid",
+    delete_band: "Delete Band",
+  },
 }) => {
   const [bands, setBands] = useState<Band[]>(() => {
     return initialBands && initialBands.length > 0
@@ -246,7 +253,7 @@ const BandedPaymentSlider: React.FC<Props> = ({
       <div className="mt-4 flex justify-around">
         {bands.map((band, index) => (
           <div key={index} className="flex flex-col items-center">
-            <label className="mr-2 font-bold">{t("percentage_paid")}</label>
+            <label className="mr-2 font-bold">{labels.percentage_paid}</label>
             <div className="flex items-center gap-2">
               <input
                 data-testid={`band-start-input-${index}`}
@@ -264,6 +271,7 @@ const BandedPaymentSlider: React.FC<Props> = ({
                 className={`text-red-500 ${
                   bands.length <= 2 ? "cursor-not-allowed opacity-50" : ""
                 }`}
+                title={labels.delete_band}
               >
                 <BinIcon />
               </button>

@@ -27,6 +27,7 @@ const App = () => {
     <BandedPaymentSlider
       bands={initialBands}
       onBandsChange={handleBandsChange}
+      labels={{ percentage_paid: "Percentage Paid", delete_band: "Delete Band"}}
     />
   );
 };
@@ -38,6 +39,7 @@ export default App;
 |------|------|-------------|
 | `bands` | `Array<{ from: number, to: number, percentage: number }>` | An array of band objects, each representing a range and percentage. |
 | `onBandsChange` | `(bands: Array<{ from: number, to: number, percentage: number }>) => void` | A callback function that receives the updated bands array when changes occur. |
+| `labels` | `{ percentage_paid: string, delete_band: string }` | An object containing custom labels for the component. Use this to override default text or provide translations. |
 
 ## Build This Package
 

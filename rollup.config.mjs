@@ -37,7 +37,7 @@ export default [
         },
       }),
     ],
-    external: ["react", "react-dom", "i18next"],
+    external: ["react", "react-dom"],
   },
   {
     input: "src/index.ts",
